@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.linear {
+    background-image: linear-gradient(to right, #0ca323 70%, #22cf08 );
+    
+    /* @apply bg-gradient-to-r from-@layetr[#24F303]-500 to-green-800; */
+}
+.linearColor {
+    color:#00D121;
+    /* @apply bg-gradient-to-r from-@layetr[#24F303]-500 to-green-800; */
+}
+
+.quicksand {
+    font-family: "Quicksand", sans-serif;
+    line-height: 24px;
+}
+
+/* .heroImg {
+    background: url("./assets/Background.jpeg");
+    background-size: cover;
+    background-position: center;
+    @apply bg-cover bg-center;
+    @apply rounded-2xl;
+    @apply shadow-lg;
+    /* @apply transition-all duration-300; */
+    /* @apply hover:scale-110; */
+
+
+.heroImg {
+    position: relative; /* Important to position the container relative */
+    background: url("./assets/Background.png");
+    background-size: cover;
+    background-position: center;
+    @apply bg-cover bg-center;
+    @apply rounded-2xl;
+    @apply shadow-lg;
+}
+
+.heroImg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background: url("./assets/Background.jpeg"); Same background */
+    background: white !important;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.05; /* Set the desired opacity */
+    z-index: -1; /* Keep it behind the content */
+    /* @apply rounded-2xl; */
+}
