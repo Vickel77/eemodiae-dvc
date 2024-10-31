@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import TabContent from "./TabContent";
 import Title from "./Title";
 import TextContent from "./TextContent";
@@ -9,77 +9,134 @@ import HouseJoy from "../assets/Group 8.png";
 import vector from "../assets/Vector.png";
 import Vector2 from "../assets/Social media 1.png";
 import Vector3 from "../assets/youtube 1.png";
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import { IoChevronBackOutline } from "react-icons/io5";
+import InputContext from "../contexts/inputContext";
 
-const tabs = [
-  {
-    id: 1,
-    title: "I CONFESS THIS",
-    content: [
-      {
-        text: "I am filled with the fresh fire of the Holy Spirit, the fire of revival burns in me.",
-        reference: "( Matthew 3:11 )",
-      },
-      {
-        text: "Divine favour is my advantage; my reality is shaped by God's favour.",
-        reference: " ( Ezekiel 47:9 )",
-      },
-      {
-        text: "From today till I see Jesus, my fire shall never go down.",
-        reference: "( Isaiah 10:17 )",
-      },
-    ],
-  },
- 
-  {
-    id: 2,
-    title: "COUNSEL",
-    content: [
-      {
-        text: "Give yourself consistently to prayer & study of the word to see more revival fire.",
-        reference: "( Acts 2:42 )",
-      },
-    ],
-    title2: "PROPHECY",
-    update: [
-        {
-          text2: "Your fire shall ever be on the increase!",
-        },
-      ],
-  },
-  {
-    id: 3,
-    title: "CONFESSION 3",
-    content: [
-      {
-        text: "~ Lord I thank you, for baptizing me with fire.",
-        reference: "( Heb 1:7 )",
-      },
-      {
-        text: "~ Help me Lord, to increase your fire in my life.",
-        reference: "( ACTS 4:31 )",
-      },
-      {
-        text: "~ My fire will never go out in Jesus name. ",
-        reference: "( Lev 6:12 )",
-      },
-    ],
-  },
-];
+
 
 const App = () => {
+  const {
+    confession1,
+    confession2,
+    confession3,
+    scripture1,
+    scripture2,
+    scripture3,
+    setScripture1,
+    setScripture2,
+    setScripture3,
+    setConfession1,
+    setConfession2,
+    setConfession3,
+    counsel,
+    prayer,
+    prophecy,
+    setProphecy,
+    setCounsel,
+    setPrayer,
+  } = useContext(InputContext);
+  const tabs = [
+    {
+      id: 1,
+      title: "I CONFESS THIS",
+      content: [
+        {
+          text: confession1 || "no default text",
+          reference: scripture1 || "no default text",
+        },
+        {
+          text: confession2 || "no default text",
+          reference: scripture2 || "no default text",
+        },
+        {
+          text: confession3 || "no default text",
+          reference: scripture3 || "no default text",
+        },
+      ],
+    },
+  
+    {
+      id: 2,
+      title: "COUNSEL",
+      content: [
+        {
+          text: counsel || "no counsel yet",
+          reference: "",
+        },
+      ],
+      title2: "PROPHECY",
+      update: [
+        {
+          text2: prophecy || "no prophecy yet",
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "PRAYERS",
+      content: [
+        {
+          text: "~ Lord I thank you, for baptizing me with fire.",
+          reference: "( Heb 1:7 )",
+        },
+        {
+          text: "~ Help me Lord, to increase your fire in my life.",
+          reference: "( ACTS 4:31 )",
+        },
+        {
+          text: "~ My fire will never go out in Jesus name. ",
+          reference: "( Lev 6:12 )",
+        },
+      ],
+    },
+  ];
+
   const [activeTab, setActiveTab] = useState(0);
   const navigate = useNavigate();
   const handleTabChange = (activeTab) => {
     if (activeTab === 0) {
-      navigate('/');  
+      navigate("/");
     } else {
-      navigate('/other');  
+      navigate("/other");
     }
-}
+  };
   return (
+    <div className="flex w-full items-center">
+    <div className="  flex flex-col h-screen bg-white">
+          <div className="px-11 bg-[#1e2d52] py-5">
+            <img src={HouseJoy} className="w-40" alt="" />
+          </div>
+          <div className="mt-4 \ px-2">
+            <Link
+              className="w-full block  border-2 border-[#1e2d52] shadow-lg font-[500] px-5 py-4 rounded-[5px]"
+              to="/"
+            >
+              Home
+            </Link>
+
+            <Link
+              className="w-full block border-2 border-[#1e2d52] shadow-lg  font-[500] px-5 py-4 rounded-[5px] mt-3"
+              to="/form"
+            >
+              Dashboard
+            </Link>
+
+            <Link
+              className="w-full block border-2 border-[#1e2d52] shadow-lg font-[500] px-5 py-4 rounded-[5px] mt-3"
+              to="/slide"
+            >
+              Slides
+            </Link>
+          </div>
+
+          <div className="px-11  mt-auto border-t-2 border-gray-400 py-4">
+            <p class="text-center quicksand text-gray-500 text-sm">
+              &copy; 2023 DVC Global. All rights reserved.
+            </p>
+          </div>
+        </div>
     <div className="heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-4">
@@ -163,6 +220,7 @@ const App = () => {
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };

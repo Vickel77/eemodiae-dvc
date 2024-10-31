@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const TabContent = ({ tab }) => {
   return (
     <div className="pt-6 ">

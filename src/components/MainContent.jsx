@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import InputContext from "../contexts/inputContext";
 import { useNavigate } from "react-router-dom";
 import Title from "./Title";
 import TextContent from "./TextContent";
@@ -8,16 +9,73 @@ import HouseJoy from "../assets/Group 8.png";
 import vector from "../assets/Vector.png";
 import Vector2 from "../assets/Social media 1.png";
 import Vector3 from "../assets/youtube 1.png";
+import { Link } from "react-router-dom"
 
 const DailyVictory = () => {
   const navigate = useNavigate(); // Initialize navigation
+  const {
+    confession1,
+    confession2,
+    confession3,
+    scripture1,
+    scripture2,
+    scripture3,
+    setScripture1,
+    setScripture2,
+    setScripture3,
+    setConfession1,
+    setConfession2,
+    setConfession3,
+    counsel,
+    prayer,
+    prophecy,
+    setProphecy,
+    setCounsel,
+    setPrayer,
+  } = useContext(InputContext);
 
   const handleConfession = () => {
     // Navigate to the next page
-    navigate("/next-page");
+    navigate("/slide");
   };
 
   return (
+    <div className="flex w-full  items-center">
+    <div className="  flex flex-col h-screen bg-white">
+          <div className="px-11 bg-[#1e2d52] py-5">
+            <img src={HouseJoy} className="w-40" alt="" />
+          </div>
+          <div className="mt-4 \ px-2">
+            <Link
+              className="w-full block  border-2 border-[#1e2d52] shadow-lg font-[500] px-5 py-4 rounded-[5px]"
+              to="/"
+            >
+              Home
+            </Link>
+
+            <Link
+              className="w-full block border-2 border-[#1e2d52] shadow-lg  font-[500] px-5 py-4 rounded-[5px] mt-3"
+              to="/form"
+            >
+              Dashboard
+            </Link>
+
+            <Link
+              className="w-full block border-2 border-[#1e2d52] shadow-lg font-[500] px-5 py-4 rounded-[5px] mt-3"
+              to="/slide"
+            >
+              Slides
+            </Link>
+          </div>
+
+          <div className="px-11  mt-auto border-t-2 border-gray-400 py-4">
+            <p className="text-center quicksand text-gray-500 text-sm">
+              &copy; 2023 DVC Global. All rights reserved.
+            </p>
+          </div>
+        </div>
+  
+
     <div className="heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-4">
@@ -44,16 +102,16 @@ const DailyVictory = () => {
         />
 
         <div className="flex space-x-10">
-          <div onClick={handleConfession} className="w-1/2 bg-yellow-700 pointer  space-y-5 mt-4">
+          <div onClick={handleConfession} className="w-1/2  pointer  space-y-5 mt-4">
             <div className="w-full flex gap-1  max-w-1/2  h-fit ">
               <div className="py-3 px-[3px]  h-fit linear"></div>
               <div>
                 <TextContent
-                  text="I am highly favoured in Christ Jesus. Everywhere I go, favour awaits me."
+                  text={confession1 || "no default text"}
                   className="text-[22px]  transition-all ease-in-out duration-200 quicksand font-[300]"
                 />
                 <TextContent
-                  text="Ephesians 1:5-6"
+                  text={scripture1 || "no default text"}
                   className="my-1 text-[18px] linearColor"
                 />
               </div>
@@ -62,11 +120,11 @@ const DailyVictory = () => {
               <div className="py-3 px-[3px]  h-fit linear"></div>
               <div>
                 <TextContent
-                  text=" Divine favour is my advantage; my reality is shaped by God's favour. "
+                  text={confession2 || "no default text"}
                   className="text-[22px]  quicksand font-[300]"
                 />
                 <TextContent
-                  text="Malachi 1:2-3, Romans 9:11-13"
+                  text={scripture2 || "no default text"}
                   className="my-1 text-[18px] linearColor"
                 />
               </div>
@@ -75,11 +133,11 @@ const DailyVictory = () => {
               <div className="py-3 px-[3px]  h-fit linear"></div>
               <div>
                 <TextContent
-                  text=" I enter my next level by God's favour. I scale heights at record speed. "
+                  text={confession3 || "no default text"}
                   className="text-[22px] quicksand font-[300]"
                 />
                 <TextContent
-                  text="Psalm 44:3"
+                  text={scripture3 || "no default text"}
                   className="my-1 text-[18px] linearColor"
                 />
               </div>
@@ -138,8 +196,7 @@ const DailyVictory = () => {
             className="text-[25px] quicksand linearColor my-2"
           />
           <TextContent
-            text="The thought of being chosen by God should boost your esteem. Commit this to memory and you will never see yourself as inferior. 
-(1 Cor 15:2) "
+            text={counsel || "no default text"}
             className="max-w-[350px]  text-[22px] quicksand font-[200]"
           />
         </div>
@@ -147,7 +204,7 @@ const DailyVictory = () => {
         {/* Prophecy Section */}
         <div className="linear h-fit p-7 text-center rounded-[30px] w-1/2 mb-4">
           <Title text="PROPHECY" className="" />
-          <TextContent text="You are chosen for a marvelous life; no more mediocrity around you!" />
+          <TextContent text={prophecy || "no default text"} />
         </div>
       </div>
 
@@ -174,6 +231,7 @@ const DailyVictory = () => {
           />
         </div>
       </div>
+    </div>
     </div>
   );
 };
