@@ -40,7 +40,6 @@ const Form = () => {
     alert("submitted");
     navigate("/")
     // Submit the form data to the server
-    console.log("Form submitted:", inputValue, textAreaValue);
   };
 
   return (
