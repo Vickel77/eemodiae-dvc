@@ -36,7 +36,7 @@ const App = () => {
       setCounsel,
       setPrayer,}}>
       <BrowserRouter>
-        <div className="bg-slate-900 w-full h-screen flex justify-center">
+        <div className="bg-slate-900 w-full flex justify-center">
           {/* Define Routes for different components */}
           <Routes>
             {/* Route for the MainContent component (the homepage or default page) */}

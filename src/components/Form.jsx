@@ -10,6 +10,7 @@ import Button from "./Button";
 import pastorImg from "../assets/Logo.png";
 import HouseJoy from "../assets/Group 8.png";
 import vector from "../assets/Vector.png";
+import SideBar from "./SideBar";
 
 const Form = () => {
   const navigate = useNavigate(); 
@@ -45,40 +46,7 @@ const Form = () => {
   return (
     <>
       <div className="flex w-full items-center">
-        <div className="  flex flex-col h-screen bg-white">
-          <div className="px-11 bg-[#1e2d52] py-5">
-            <img src={HouseJoy} className="w-40" alt="" />
-          </div>
-          <div className="mt-4 \ px-2">
-            <Link
-              className="w-full block  border-2 border-[#1e2d52] shadow-lg font-[500] px-5 py-4 rounded-[5px]"
-              to="/"
-            >
-              Home
-            </Link>
-
-            <Link
-              className="w-full block border-2 border-[#1e2d52] shadow-lg  font-[500] px-5 py-4 rounded-[5px] mt-3"
-              to="/form"
-            >
-              Dashboard
-            </Link>
-
-            <Link
-              className="w-full block border-2 border-[#1e2d52] shadow-lg font-[500] px-5 py-4 rounded-[5px] mt-3"
-              to="/slide"
-            >
-              Slides
-            </Link>
-          </div>
-
-          <div className="px-11  mt-auto border-t-2 border-gray-400 py-4">
-            <p className="text-center quicksand text-gray-500 text-sm">
-              &copy; 2023 DVC Global. All rights reserved.
-            </p>
-          </div>
-        </div>
-
+        <SideBar />
         <div className=" w-[97%]">
           <form onSubmit={handleSubmit} action="get">
             <div className="bg-[#D9D9D9] text-black space-y-5 p-4 px-8 rounded-lg shadow-lg w-[60%] mx-auto my-auto">
@@ -178,7 +146,7 @@ const Form = () => {
 
               {/* Save Button */}
               <div className="w-full flex justify-end">
-                <button className="bg-gradient-to-r from-green-400 to-green-600 flex items-center font-[600] p-2 rounded-[10px] text-white px-4">
+                <button className="bg-[#1FF8F2] flex items-center font-[600] p-2 rounded-[10px] text-[#000000] px-4">
                   Save Changes
                 </button>
               </div>
