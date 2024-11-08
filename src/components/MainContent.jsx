@@ -48,6 +48,11 @@ const DailyVictory = () => {
   }
 
   return (
+    <>
+
+   
+    
+
     <div ref={componentRef} className="flex w-full   items-center">
       <SideBar />
 
@@ -63,18 +68,7 @@ const DailyVictory = () => {
               className="text-[24px] font-[600] text-white"
             />
 
-            <p
-              className="italic cursor-pointer quicksand linearColor"
-              onClick={() =>
-                exportComponentAsPNG(componentRef, {
-                  quality: 1,
-                  scale: 100, // Increase scale to improve clarity
-                  backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
-                })
-              }
-            >
-              Export as PNG
-            </p>
+         
           </div>
 
           <div className="flex space-x-10">
@@ -202,6 +196,19 @@ const DailyVictory = () => {
         </div>
       </div>
     </div>
+        <p
+              className="italic cursor-pointer quicksand linearColor"
+              onClick={() =>
+                exportComponentAsPNG(componentRef, {
+                  quality: 1,
+                  scale: 100, // Increase scale to improve clarity
+                  backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
+                })
+              }
+            >
+              Export as PNG
+            </p>
+    </>
   );
 };
 

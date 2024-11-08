@@ -101,6 +101,12 @@ const App = () => {
     }
   };
   return (
+    <>
+    
+    
+
+       
+    
     <div ref={componentRef} className="flex w-full items-center">
       <SideBar />
       <div className="heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto">
@@ -123,18 +129,6 @@ const App = () => {
               ))}
             </div>
 
-            <p
-              className="italic cursor-pointer quicksand linearColor"
-              onClick={() =>
-                exportComponentAsPNG(componentRef, {
-                  quality: 1,
-                  scale: 100, // Increase scale to improve clarity
-                  backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
-                })
-              }
-            >
-              Export as PNG
-            </p>
           </div>
           <div className="">
             <TabContent tab={tabs[activeTab]} />
@@ -189,6 +183,19 @@ const App = () => {
         </div>
       </div>
     </div>
+         <p
+              className="italic cursor-pointer quicksand linearColor"
+              onClick={() =>
+                exportComponentAsPNG(componentRef, {
+                  quality: 1,
+                  scale: 100, // Increase scale to improve clarity
+                  backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
+                })
+              }
+            >
+              Export as PNG
+            </p>
+    </>
   );
 };
 
