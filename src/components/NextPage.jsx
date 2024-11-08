@@ -1,25 +1,17 @@
-import React, { useState, useContext, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState, useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import TabContent from "./TabContent";
-import Title from "./Title";
-import TextContent from "./TextContent";
 import Button from "./Button";
-import pastorImg from "../assets/Logo.png";
 import HouseJoy from "../assets/Group 8.png";
 import vector from "../assets/Vector.png";
 import Vector2 from "../assets/Social media 1.png";
 import Vector3 from "../assets/youtube 1.png";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import { IoChevronBackOutline } from "react-icons/io5";
-import InputContext from "../contexts/inputContext";
+import InputContext from "../contexts/DataContext";
 import SideBar from "./SideBar";
 import Header from "./Header";
-import {
-  exportComponentAsJPEG,
-  exportComponentAsPDF,
-  exportComponentAsPNG,
-} from "react-component-export-image";
+import { exportComponentAsPNG } from "react-component-export-image";
 
 const App = () => {
   const {

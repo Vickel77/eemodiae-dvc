@@ -1,22 +1,16 @@
-import React, { useState, useContext, useRef } from "react";
-import InputContext from "../contexts/inputContext";
+import { useContext, useRef } from "react";
+import InputContext from "../contexts/DataContext";
 import { useNavigate } from "react-router-dom";
 import Title from "./Title";
 import TextContent from "./TextContent";
 import Button from "./Button";
-import pastorImg from "../assets/Logo.png";
 import HouseJoy from "../assets/Group 8.png";
 import vector from "../assets/Vector.png";
 import Vector2 from "../assets/Social media 1.png";
 import Vector3 from "../assets/youtube 1.png";
-import { Link } from "react-router-dom";
 import SideBar from "./SideBar";
 import Header from "./Header";
-import {
-  exportComponentAsJPEG,
-  exportComponentAsPDF,
-  exportComponentAsPNG,
-} from "react-component-export-image";
+import { exportComponentAsPNG } from "react-component-export-image";
 
 const DailyVictory = () => {
   const componentRef = useRef();
