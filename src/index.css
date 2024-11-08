@@ -4,13 +4,17 @@
 
 
 .linear {
-    background-image: linear-gradient(to right, #0ca323 70%, #22cf08 );
+    background-image: linear-gradient(to right, #00000057 70%, #00000057 );
     
     /* @apply bg-gradient-to-r from-@layetr[#24F303]-500 to-green-800; */
 }
 .linearColor {
-    color:#00D121;
+    color:#1FF8F2;
     /* @apply bg-gradient-to-r from-@layetr[#24F303]-500 to-green-800; */
+}
+
+.grayscale {
+    filter: grayscale(100) !important;
 }
 
 .quicksand {
@@ -31,7 +35,7 @@
 
 .heroImg {
     position: relative; /* Important to position the container relative */
-    background: url("./assets/Background.png");
+    background: url("./assets/Background.jpg");
     background-size: cover;
     background-position: center;
     @apply bg-cover bg-center;
