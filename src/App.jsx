@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import InputContext from "./contexts/InputContext.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import InputContext from "./contexts/InputContext.js";
 import MainContent from "./components/MainContent";
 import NextPage from "./components/NextPage.jsx"; // Another page to navigate to
 import Form from "./components/Form.jsx";
