@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import InputContext from "../contexts/inputContext";
+import InputContext from "../contexts/DataContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import TabContent from "./TabContent";
