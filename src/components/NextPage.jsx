@@ -1,25 +1,17 @@
-import React, { useState, useContext, useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState, useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import TabContent from "./TabContent";
-import Title from "./Title";
-import TextContent from "./TextContent";
 import Button from "./Button";
-import pastorImg from "../assets/Logo.png";
 import HouseJoy from "../assets/Group 8.png";
 import vector from "../assets/Vector.png";
 import Vector2 from "../assets/Social media 1.png";
 import Vector3 from "../assets/youtube 1.png";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import { IoChevronBackOutline } from "react-icons/io5";
-import InputContext from "../contexts/inputContext";
+import InputContext from "../contexts/DataContext";
 import SideBar from "./SideBar";
 import Header from "./Header";
-import {
-  exportComponentAsJPEG,
-  exportComponentAsPDF,
-  exportComponentAsPNG,
-} from "react-component-export-image";
+import { exportComponentAsPNG } from "react-component-export-image";
 
 const App = () => {
   const {
@@ -109,94 +101,95 @@ const App = () => {
     }
   };
   return (
-    <div ref={componentRef} className="flex w-full items-center">
-      <SideBar />
-      <div className="heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto">
-        {/* Header Section */}
-        <Header />
-        <div className="  w-flex ">
-          <div className="flex justify-between  items-center mt-8">
-            <div className="flex  h-full">
-              {tabs.map((tab, index) => (
-                <div
-                  key={tab.id}
-                  className={`h-1 w-8 mx-1 ${
-                    index === activeTab ? "bg-[#1FF8F2]" : "bg-gray-400"
-                  }`}
-                  style={{
-                    borderRadius: index === activeTab ? "4px" : "4px",
-                    height: "4px",
-                  }}
-                />
-              ))}
+    <>
+      <div ref={componentRef} className="flex w-full items-center">
+        <SideBar />
+        <div className="heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto">
+          {/* Header Section */}
+          <Header />
+          <div className="  w-flex ">
+            <div className="flex justify-between  items-center mt-8">
+              <div className="flex  h-full">
+                {tabs.map((tab, index) => (
+                  <div
+                    key={tab.id}
+                    className={`h-1 w-8 mx-1 ${
+                      index === activeTab ? "bg-[#1FF8F2]" : "bg-gray-400"
+                    }`}
+                    style={{
+                      borderRadius: index === activeTab ? "4px" : "4px",
+                      height: "4px",
+                    }}
+                  />
+                ))}
+              </div>
             </div>
-
-            <p
-              className="italic cursor-pointer quicksand linearColor"
-              onClick={() =>
-                exportComponentAsPNG(componentRef, {
-                  quality: 1,
-                  scale: 100, // Increase scale to improve clarity
-                  backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
-                })
-              }
-            >
-              Export as PNG
-            </p>
-          </div>
-          <div className="">
-            <TabContent tab={tabs[activeTab]} />
-            {/* Page Counter */}
-            <div className="flex justify-between items-center mt2">
-              <span className="linear rounded-[10px] px-[20px] text-[20px] quicksand py-2 hover:bg-green-500 text-white">
-                {activeTab + 1}/{tabs.length}
-              </span>
-              {/* Navigation Buttons */}
-              <div className="space-x-2">
-                <button
-                  className=" rounded-[10px] bg-[#033331bb] px-[20px] text-[20px] quicksand py-2  text-white"
-                  onClick={() => setActiveTab((activeTab - 1) % tabs.length)}
-                >
-                  <IoChevronBackOutline />
-                </button>
-                <button
-                  className="rounded-[10px] px-[20px] bg-[#033331bb] text-[20px] quicksand py-2  text-white"
-                  onClick={() => setActiveTab((activeTab + 1) % tabs.length)}
-                >
-                  <IoChevronForwardOutline />
-                </button>
+            <div className="">
+              <TabContent tab={tabs[activeTab]} />
+              {/* Page Counter */}
+              <div className="flex justify-between items-center mt2">
+                <span className="linear rounded-[10px] px-[20px] text-[20px] quicksand py-2 hover:bg-green-500 text-white">
+                  {activeTab + 1}/{tabs.length}
+                </span>
+                {/* Navigation Buttons */}
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Confession Section */}
+          {/* Confession Section */}
 
-        {/* Footer Section */}
-        <div className="flex justify-between items-center mt-6">
-          <div>
-            <img src={HouseJoy} className="w-40" alt="" />
-          </div>
-          <div className="flex flex-col items-center">
-            <img src={vector} alt="" />
-            <h3 className="quicksand">eemodioe.org</h3>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex">
-              <img src={Vector2} alt="" />
-              <img src={Vector3} alt="" />
+          {/* Footer Section */}
+          <div className="flex justify-between items-center mt-6">
+            <div>
+              <img src={HouseJoy} className="w-40" alt="" />
             </div>
-            <h3>hjcglobal</h3>
-          </div>
-          <div>
-            <Button
-              text="Please Share"
-              className="bg-[#1FF8F2] text-[#000000] font-[700] rounded-[20px] px-[20px] text-[20px] quicksand py-4 "
-            />
+            <div className="flex flex-col items-center">
+              <img src={vector} alt="" />
+              <h3 className="quicksand">eemodioe.org</h3>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="flex">
+                <img src={Vector2} alt="" />
+                <img src={Vector3} alt="" />
+              </div>
+              <h3>hjcglobal</h3>
+            </div>
+            <div>
+              <Button
+                text="Please Share"
+                className="bg-[#1FF8F2] text-[#000000] font-[700] rounded-[20px] px-[20px] text-[20px] quicksand py-4 "
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div className="space-x-2">
+        <button
+          className=" rounded-[10px] bg-[#033331bb] px-[20px] text-[20px] quicksand py-2  text-white"
+          onClick={() => setActiveTab((activeTab - 1) % tabs.length)}
+        >
+          <IoChevronBackOutline />
+        </button>
+        <button
+          className="rounded-[10px] px-[20px] bg-[#033331bb] text-[20px] quicksand py-2  text-white"
+          onClick={() => setActiveTab((activeTab + 1) % tabs.length)}
+        >
+          <IoChevronForwardOutline />
+        </button>
+      </div>
+      <p
+        className="italic cursor-pointer quicksand linearColor"
+        onClick={() =>
+          exportComponentAsPNG(componentRef, {
+            quality: 1,
+            scale: 100, // Increase scale to improve clarity
+            backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
+          })
+        }
+      >
+        Export as PNG
+      </p>
+    </>
   );
 };
 

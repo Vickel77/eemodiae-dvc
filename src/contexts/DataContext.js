@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const DataContext = createContext(undefined);
+const InputContext = createContext(undefined);
 
-export default DataContext;
+export default InputContext;

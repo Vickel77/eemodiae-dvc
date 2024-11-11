@@ -1,15 +1,6 @@
-import React, { useContext } from "react";
-import { useState } from "react";
+import { useContext } from "react";
 import InputContext from "../contexts/DataContext";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import TabContent from "./TabContent";
-import Title from "./Title";
-import TextContent from "./TextContent";
-import Button from "./Button";
-import pastorImg from "../assets/Logo.png";
-import HouseJoy from "../assets/Group 8.png";
-import vector from "../assets/Vector.png";
 import SideBar from "./SideBar";
 
 const Form = () => {
