@@ -4,7 +4,7 @@ import HouseJoy from "../assets/Group 8.png";
 
 const SideBar = () => {
   return (
-    <div className="  flex flex-col h-screen bg-white">
+    <div className="  hidden lg:flex flex-col h-screen bg-white">
           <div className="px-11 bg-[#1e2d52] py-5">
             <img src={HouseJoy} className="w-40" alt="" />
           </div>

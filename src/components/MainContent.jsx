@@ -9,7 +9,6 @@ import HouseJoy from "../assets/Group 8.png";
 import vector from "../assets/Vector.png";
 import Vector2 from "../assets/Social media 1.png";
 import Vector3 from "../assets/youtube 1.png";
-import { Link } from "react-router-dom";
 import SideBar from "./SideBar";
 import Header from "./Header";
 import {
@@ -20,7 +19,7 @@ import {
 
 const DailyVictory = () => {
   const componentRef = useRef();
-  const navigate = useNavigate(); // Initialize navigation
+  const navigate = useNavigate();
   const {
     confession1,
     confession2,
@@ -43,39 +42,32 @@ const DailyVictory = () => {
   } = useContext(InputContext);
 
   const handleConfession = () => {
-    // Navigate to the next page
     navigate("/slide");
   };
+
   function insertLineBreaks(prayer) {
     return `~ ${String(prayer)
       .replace("~", "")
       .split("~")
-      .join("<br/ > <br /> ~ ")}`;
+      .join("<br/> <br/> ~ ")}`;
   }
 
   return (
-    <div ref={componentRef} className="flex w-full   items-center">
+    <div ref={componentRef} className="flex flex-col lg:flex-row w-full items-center px-4 lg:px-8 py-4">
       <SideBar />
-
-      <div className="heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto">
-        {/* Header Section */}
-
+      <div className="heroImg text-white p-3 lg:p-8 rounded-lg shadow-lg w-full lg:w-1/2 mx-auto my-auto">
         <Header />
-        {/* Confession Section */}
-        <div className="flex  flex-col">
-          <div className="flex justify-between items-center">
-            <Title
-              text="I CONFESS THIS"
-              className="text-[24px] font-[600] text-white"
-            />
 
+        <div className="flex flex-col">
+          <div className="flex justify-between items-center">
+            <Title text="I CONFESS THIS" className="text-lg lg:text-2xl font-semibold text-white" />
             <p
-              className="italic cursor-pointer quicksand linearColor"
+              className="italic cursor-pointer quicksand linearColor text-sm lg:text-base"
               onClick={() =>
                 exportComponentAsPNG(componentRef, {
                   quality: 1,
-                  scale: 100, // Increase scale to improve clarity
-                  backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
+                  scale: 100,
+                  backgroundColor: "#ffffff",
                 })
               }
             >
@@ -83,128 +75,56 @@ const DailyVictory = () => {
             </p>
           </div>
 
-          <div className="flex space-x-10">
-            <div
-              onClick={handleConfession}
-              className="w-1/2  pointer  space-y-5 mt-4"
-            >
-              <div className="w-full flex gap-1  max-w-1/2  h-fit ">
-                <div className=" w-[100%] max-w-[100%]">
-                  <TextContent
-                    text={confession1 || "no default text"}
-                    className="text-[22px] w-fit  transition-all ease-in-out duration-200 quicksand font-[300]"
-                  />
-                  <TextContent
-                    text={scripture1 || "no default text"}
-                    className="my-1 text-[18px] linearColor"
-                  />
-                </div>
+          <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10">
+            <div onClick={handleConfession} className="lg:w-1/2 space-y-5 mt-4">
+              {/** Confession sections with responsive text sizes */}
+              <div className="w-full flex flex-col gap-1">
+                <TextContent text={confession1 || "no default text"} className="text-base lg:text-lg font-light" />
+                <TextContent text={scripture1 || "no default text"} className="my-1 text-sm lg:text-base linearColor" />
               </div>
-              <div className="w-full flex gap-1  max-w-1/2  h-fit ">
-                <div>
-                  <TextContent
-                    text={confession2 || "no default text"}
-                    className="text-[22px]  quicksand font-[300]"
-                  />
-                  <TextContent
-                    text={scripture2 || "no default text"}
-                    className="my-1 text-[18px] linearColor"
-                  />
-                </div>
+              <div className="w-full flex flex-col gap-1">
+                <TextContent text={confession2 || "no default text"} className="text-base lg:text-lg font-light" />
+                <TextContent text={scripture2 || "no default text"} className="my-1 text-sm lg:text-base linearColor" />
               </div>
-              <div className="w-full flex gap-1   h-fit ">
-                <div>
-                  <TextContent
-                    text={confession3 || "no default text"}
-                    className="text-[22px] quicksand font-[300]"
-                  />
-                  <TextContent
-                    text={scripture3 || "no default text"}
-                    className="my-1 text-[18px] linearColor"
-                  />
-                </div>
+              <div className="w-full flex flex-col gap-1">
+                <TextContent text={confession3 || "no default text"} className="text-base lg:text-lg font-light" />
+                <TextContent text={scripture3 || "no default text"} className="my-1 text-sm lg:text-base linearColor" />
               </div>
             </div>
 
-            {/* Prayer Section */}
-            <div className="linear w-1/2 px-4 py-4 rounded-[30px] mb-4">
-              <Title text="PRAYER" className="text-[16px] px-4 text-center" />
-              <div className="">
-                <div>
-                  <TextContent innerHtml={insertLineBreaks(prayer)} />
-                </div>
-
-                {/* <div>
-                <TextContent
-                  text="~ Help me Lord, to lead the life you have chosen me for. "
-                  className="text-[22px] quicksand font-[300]"
-                />
-                <TextContent
-                  text="(Col 1:10)"
-                  className="text-[18px] quicksand"
-                />
-              </div>
-
-              <div>
-                <TextContent
-                  text=" 
-
-~ We rise above every limitations placed on my family in Jesus name. 
-"
-                  className="text-[22px] quicksand font-[300]"
-                />
-                <TextContent
-                  text="(Zec 1:19-21)"
-                  className="text-[18px] quicksand"
-                />
-              </div> */}
-              </div>
+            <div className="linear w-full lg:w-1/2 p-4 rounded-xl mb-4">
+              <Title text="PRAYER" className="text-sm lg:text-base text-center" />
+              <TextContent innerHtml={insertLineBreaks(prayer)} className="text-base lg:text-lg" />
             </div>
           </div>
         </div>
 
-        {/* Counsel Section */}
-        <div className="flex gap-10">
-          <div className="mb-4 w-1/2">
-            <Title
-              text="COUNSEL"
-              className="text-[25px] quicksand linearColor my-2"
-            />
-            <TextContent
-              text={counsel || "no default text"}
-              className="max-w-[350px]  text-[22px] quicksand font-[200]"
-            />
+        <div className="flex flex-col lg:flex-row gap-4 mt-4">
+          <div className="lg:w-1/2 mb-4">
+            <Title text="COUNSEL" className="text-lg lg:text-2xl linearColor my-2" />
+            <TextContent text={counsel || "no default text"} className="text-base lg:text-lg font-light" />
           </div>
-
-          {/* Prophecy Section */}
-          <div className="linear h-fit p-7 text-center rounded-[30px] w-1/2 mb-4">
-            <Title text="PROPHECY" className="" />
-            <TextContent text={prophecy || "no default text"} />
+          <div className="linear p-6 lg:p-7 text-center rounded-xl w-full lg:w-1/2 mb-4">
+            <Title text="PROPHECY" className="text-sm lg:text-base" />
+            <TextContent text={prophecy || "no default text"} className="text-base lg:text-lg" />
           </div>
         </div>
 
-        {/* Footer Section */}
-        <div className="flex justify-between items-center mt-6">
-          <div>
-            <img src={HouseJoy} className="w-40" alt="" />
+        <div className="flex flex-col lg:flex-row justify-between items-center mt-6 gap-4">
+          <img src={HouseJoy} className="w-20 lg:w-40" alt="HouseJoy" />
+          <div className="flex flex-col items-center text-center">
+            <img src={vector} alt="Vector Logo" />
+            <h3 className="text-sm lg:text-base">eemodioe.org</h3>
           </div>
-          <div className="flex flex-col items-center">
-            <img src={vector} alt="" />
-            <h3 className="quicksand">eemodioe.org</h3>
+          <div className="flex items-center gap-2">
+            <img src={Vector2} alt="Social Icon 1" className="w-6 lg:w-8" />
+            <img src={Vector3} alt="Social Icon 2" className="w-6 lg:w-8" />
+            <h3 className="text-sm lg:text-base">hjcglobal</h3>
           </div>
-          <div className="flex flex-col items-center">
-            <div className="flex">
-              <img src={Vector2} alt="" />
-              <img src={Vector3} alt="" />
-            </div>
-            <h3>hjcglobal</h3>
-          </div>
-          <div>
-            <Button
-              text="Please Share"
-              className="bg-[#1FF8F2] text-[#000000] font-[700] rounded-[20px] px-[20px] text-[20px] quicksand py-4 "
-            />
-          </div>
+          <Button
+            text="Please Share"
+            className="bg-[#1FF8F2] text-black font-bold rounded-lg px-4 lg:px-6 py-2 lg:py-4 text-sm lg:text-base"
+          />
         </div>
       </div>
     </div>

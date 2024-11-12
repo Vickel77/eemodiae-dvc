@@ -37,69 +37,18 @@ const App = () => {
     setConfession3,
     counsel,
     prayer,
+    setActiveTab,
+    activeTab,
     prophecy,
     setProphecy,
     setCounsel,
     setPrayer,
+    tabs,
+    componentRef,
   } = useContext(InputContext);
-  const tabs = [
-    {
-      id: 1,
-      title: "I CONFESS THIS",
-      content: [
-        {
-          text: confession1 || "no default text",
-          reference: scripture1 || "no default text",
-        },
-        {
-          text: confession2 || "no default text",
-          reference: scripture2 || "no default text",
-        },
-        {
-          text: confession3 || "no default text",
-          reference: scripture3 || "no default text",
-        },
-      ],
-    },
 
-    {
-      id: 2,
-      title: "COUNSEL",
-      content: [
-        {
-          text: counsel || "no counsel yet",
-          reference: "",
-        },
-      ],
-      title2: "PROPHECY",
-      update: [
-        {
-          text2: prophecy || "no prophecy yet",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "PRAYERS",
-      content: [
-        {
-          text: "~ Lord I thank you, for baptizing me with fire.",
-          reference: "( Heb 1:7 )",
-        },
-        {
-          text: "~ Help me Lord, to increase your fire in my life.",
-          reference: "( ACTS 4:31 )",
-        },
-        {
-          text: "~ My fire will never go out in Jesus name. ",
-          reference: "( Lev 6:12 )",
-        },
-      ],
-    },
-  ];
-
-  const componentRef = useRef();
-  const [activeTab, setActiveTab] = useState(0);
+ 
+  
   const navigate = useNavigate();
   const handleTabChange = (activeTab) => {
     if (activeTab === 0) {
@@ -109,10 +58,11 @@ const App = () => {
     }
   };
   return (
-    <div ref={componentRef} className="flex w-full items-center">
+    <div  className="flex w-full items-center">
       <SideBar />
-      <div className="heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto">
-        {/* Header Section */}
+      <div ref={componentRef} className=" heroImg text-white p-3 px-8 rounded-lg shadow-lg w-1/2 mx-auto my-auto"style={{
+          backgroundSize: 'cover'  // Double the size
+          }}>
         <Header />
         <div className="  w-flex ">
           <div className="flex justify-between  items-center mt-8">
@@ -131,18 +81,7 @@ const App = () => {
               ))}
             </div>
 
-            <p
-              className="italic cursor-pointer quicksand linearColor"
-              onClick={() =>
-                exportComponentAsPNG(componentRef, {
-                  quality: 1,
-                  scale: 100, // Increase scale to improve clarity
-                  backgroundColor: "#ffffff", // Sets a solid white background to avoid transparency
-                })
-              }
-            >
-              Export as PNG
-            </p>
+           
           </div>
           <div className="">
             <TabContent tab={tabs[activeTab]} />
@@ -152,20 +91,6 @@ const App = () => {
                 {activeTab + 1}/{tabs.length}
               </span>
               {/* Navigation Buttons */}
-              <div className="space-x-2">
-                <button
-                  className=" rounded-[10px] bg-[#033331bb] px-[20px] text-[20px] quicksand py-2  text-white"
-                  onClick={() => setActiveTab((activeTab - 1) % tabs.length)}
-                >
-                  <IoChevronBackOutline />
-                </button>
-                <button
-                  className="rounded-[10px] px-[20px] bg-[#033331bb] text-[20px] quicksand py-2  text-white"
-                  onClick={() => setActiveTab((activeTab + 1) % tabs.length)}
-                >
-                  <IoChevronForwardOutline />
-                </button>
-              </div>
             </div>
           </div>
         </div>
