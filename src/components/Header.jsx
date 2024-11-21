@@ -1,19 +1,21 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import pastorImg from "../assets/Logo.png";
 import Title from "./Title";
 import TextContent from "./TextContent";
 import Button from "./Button";
+import InputContext from '../contexts/inputContext';
 
 const Header = () => {
+  const {day, month, title} = useContext(InputContext)
   return (
     <div>
        <div className="flex justify-between items-center mb-4">
         <div>
-          <Title text="DAY 11" />
-          <TextContent text="Oct 2024" />
+          <Title text={`DAY ${day}`} />
+          <TextContent text={`${month} 2024` } />
         </div>
         <div className="flex flex-col items-center space-y-1">
-          <Title text="Daily Victory Confessions" />
+          <Title text={title} />
           <Title text="Job 22:28 " className="font-[100] text-[16px]" />
           <Button
             text="I AM FAVOURED"

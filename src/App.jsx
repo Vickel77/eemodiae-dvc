@@ -15,26 +15,39 @@ const App = () => {
   const [counsel, setCounsel] = useState("");
   const [prayer, setPrayer] = useState([]);
   const [prophecy, setProphecy] = useState("");
-  
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [title, setTitle] = useState("");
+
   return (
-    <InputContext.Provider value={{ confession1,
-      confession2,
-      confession3,
-      scripture1,
-      scripture2,
-      scripture3,
-      setScripture1,
-      setScripture2,
-      setScripture3,
-      setConfession1,
-      setConfession2,
-      setConfession3,
-      counsel,
-      prayer,
-      prophecy,
-      setProphecy,
-      setCounsel,
-      setPrayer,}}>
+    <InputContext.Provider
+      value={{
+        confession1,
+        confession2,
+        confession3,
+        scripture1,
+        scripture2,
+        scripture3,
+        setScripture1,
+        setScripture2,
+        setScripture3,
+        setConfession1,
+        setConfession2,
+        setConfession3,
+        counsel,
+        prayer,
+        prophecy,
+        setProphecy,
+        setCounsel,
+        setPrayer,
+        day,
+        setDay,
+        month,
+        setMonth,
+        title,
+        setTitle,
+      }}
+    >
       <BrowserRouter>
         <div className="bg-slate-900 w-full flex justify-center">
           {/* Define Routes for different components */}
